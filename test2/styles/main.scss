@@ -47,22 +47,25 @@ header{
 section{
   background-color: #fff;
   width: 100%;
-
   #ul{
     display: block;
     color: #a5a5a5;
     @include remCalc(margin-top, 40);
     @include remCalc(margin-right, 30);
     @include remCalc(margin-left, 30);
-    li{
+    .pot{
+      float: left;
+      position: absolute;
+      font-size: 12px;
+      @include remCalc(margin-right, 34);
+      @include remCalc(line-height, 60);
+    }
+    .content{
+      text-align: justify;
       font-size: 12px;
       color: #a5a5a5;
-      @include remCalc(margin-bottom, 36);
+      @include remCalc(margin-left, 54);
       @include remCalc(line-height, 60);
-      i{
-        @include remCalc(margin-right, 34);
-        font-size: 12px;
-      }
     }
   }
 }
@@ -73,16 +76,16 @@ section{
   [data-dpr="3"] header p{
     font-size: 36px;
   }
-  [data-dpr="2"] section #ul li{
+  [data-dpr="2"] section #ul .content{
     font-size: 24px;
   }
-  [data-dpr="3"] section #ul li{
+  [data-dpr="3"] section #ul .content{
     font-size: 36px;
   }
-  [data-dpr="2"] section #ul li i{
+  [data-dpr="2"] section #ul .pot{
     font-size: 24px;
   }
-  [data-dpr="3"] section #ul li i{
+  [data-dpr="3"] section #ul .pot{
     font-size: 36px;
   }
 }
