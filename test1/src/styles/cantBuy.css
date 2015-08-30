@@ -1,0 +1,44 @@
+html {
+  font-size: 75px; }
+
+body {
+  text-align: center; }
+  body #sorry-big {
+    width: 3.6rem;
+    height: 3.6rem;
+    margin-top: 2.26667rem;
+    margin-bottom: 0.66667rem; }
+  body .sorry-big {
+    width: 3.6rem;
+    height: 3.6rem;
+    margin-top: 3.2rem;
+    margin-bottom: 0.66667rem; }
+  body p {
+    color: #999999;
+    font-size: 16px;
+    margin-top: 0.66667rem; }
+  body #button {
+    background-color: #00aaee;
+    color: #fff;
+    margin: 0 auto;
+    height: 1.14667rem;
+    line-height: 1.14667rem;
+    width: 7.73333rem;
+    margin-top: 0.8rem;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer; }
+
+[data-dpr="2"] body p {
+  font-size: 32px; }
+
+[data-dpr="3"] body p {
+  font-size: 48px; }
+
+[data-dpr="2"] body #button {
+  font-size: 40px; }
+
+[data-dpr="3"] body #button {
+  font-size: 60px; }
+
+/*# sourceMappingURL=cantBuy.css.map */

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="dist/scripts/main.min.js"></script>
+    <script>
+        var url = "http://kaohe.zeroling.com/kaohe/state";
+        var obj = {
+            1: "vicinity.html",
+            2: "recommend.html",
+            3: "notOpen.html",
+            4: "notFind.html",
+            5: "cantBuy.html"
+        }
+        MyQuery.post(url, function(res){
+            var response = res.response,
+                data = JSON.parse(response);
+            if(data.success){
+                location.href = obj[data.state];
+            }else{
+                console.warn(res);
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

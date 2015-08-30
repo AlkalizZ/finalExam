@@ -1,0 +1,73 @@
+$browser-default-font-size: 75px !default;
+html {
+  font-size: $browser-default-font-size;
+}
+@function strip-units($number){
+  @return $number / ($number * 0 + 1);
+}
+@mixin remCalc($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));
+    $browser-default-font-size: strip-units($browser-default-font-size);
+    $pxValues: #{$pxValues + $value / $browser-default-font-size}rem;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+
+  #{$property}: $pxValues;
+}
+
+
+body{
+  text-align: center;
+
+  #sorry-big{
+    @include remCalc(width, 270);
+    @include remCalc(height, 270);
+    @include remCalc(margin-top, 170);
+    @include remCalc(margin-bottom, 50);
+  }
+  .sorry-big{
+    @include remCalc(width, 270);
+    @include remCalc(height, 270);
+    @include remCalc(margin-top, 240);
+    @include remCalc(margin-bottom, 50);
+  }
+  p{
+    color: #999999;
+    font-size: 16px;
+    @include remCalc(margin-top, 50);
+  }
+  #button{
+    background-color: #00aaee;
+    color: #fff;
+    margin: 0 auto;
+    @include remCalc(height, 86);
+    @include remCalc(line-height, 86);
+    @include remCalc(width, 580);
+    @include remCalc(margin-top, 60);
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+@at-root {
+  [data-dpr="2"] body p{
+    font-size: 32px;
+  }
+  [data-dpr="3"] body p{
+    font-size: 48px;
+  }
+  [data-dpr="2"] body #button{
+    font-size: 40px;
+  }
+  [data-dpr="3"] body #button{
+    font-size: 60px;
+  }
+}

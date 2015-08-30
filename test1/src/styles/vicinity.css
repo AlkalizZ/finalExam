@@ -1,0 +1,141 @@
+html {
+  font-size: 75px; }
+
+.list-wrap {
+  width: 100%; }
+  .list-wrap .list {
+    margin-left: 0.4rem;
+    height: 2.30667rem;
+    border-bottom: 1px solid #e5e5e5; }
+    .list-wrap .list .list-img {
+      position: absolute;
+      height: 1.73333rem;
+      width: 2.13333rem;
+      margin-top: 0.28rem;
+      margin-bottom: 0.28rem; }
+    .list-wrap .list .list-info {
+      margin-left: 2.4rem;
+      position: relative; }
+      .list-wrap .list .list-info .info-left {
+        float: left; }
+    .list-wrap .list h2 {
+      color: #000;
+      font-size: 15px;
+      line-height: 0.41333rem;
+      width: 4.66667rem;
+      padding-top: 0.45333rem;
+      margin-bottom: 0.22667rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
+    .list-wrap .list h3 .star {
+      display: inline-block;
+      height: 0.32rem;
+      margin-right: 0.2rem;
+      color: #ffc600; }
+      .list-wrap .list h3 .star i {
+        font-size: 12px;
+        margin-right: 0.02667rem; }
+    .list-wrap .list h3 span {
+      font-size: 12px; }
+    .list-wrap .list .info-left-bottom {
+      margin-top: 0.22667rem; }
+    .list-wrap .list .good {
+      height: 0.32rem;
+      width: 0.33333rem;
+      margin-right: 0.16rem; }
+    .list-wrap .list span {
+      color: #cccccc;
+      font-size: 12px;
+      display: inline-block; }
+    .list-wrap .list .freinds {
+      margin-right: 0.2rem; }
+    .list-wrap .list .others {
+      margin-right: 0.42667rem; }
+    .list-wrap .list .info-right {
+      float: right;
+      color: #f85800;
+      margin-right: 0.26667rem;
+      padding-top: 1.16rem; }
+      .list-wrap .list .info-right p {
+        font-size: 13px;
+        line-height: 0.4rem; }
+      .list-wrap .list .info-right big {
+        font-size: 40px;
+        line-height: 1.09333rem; }
+    .list-wrap .list ul {
+      position: absolute;
+      top: 0.41333rem;
+      right: 0.77333rem; }
+      .list-wrap .list ul li {
+        float: left;
+        margin-left: 0.10667rem; }
+        .list-wrap .list ul li img {
+          width: 0.37333rem;
+          height: 0.37333rem; }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.8rem;
+  background: url("../images/load.gif") no-repeat center #fff;
+  -webkit-background-size: 0.8rem;
+  background-size: 0.8rem; }
+
+#panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.06667rem;
+  line-height: 1.06667rem;
+  font-size: 16px;
+  text-align: center;
+  display: none;
+  background-color: #fff; }
+
+[data-dpr="2"] .list-wrap .list h2 {
+  font-size: 30px; }
+
+[data-dpr="3"] .list-wrap .list h2 {
+  font-size: 60px; }
+
+[data-dpr="2"] .list-wrap .list h3 span {
+  font-size: 24px; }
+
+[data-dpr="3"] .list-wrap .list h3 span {
+  font-size: 36px; }
+
+[data-dpr="2"] .list-wrap .list h3 .star i {
+  font-size: 24px; }
+
+[data-dpr="3"] .list-wrap .list h3 .star i {
+  font-size: 36px; }
+
+[data-dpr="2"] .list-wrap .info-left-bottom span {
+  font-size: 24px; }
+
+[data-dpr="3"] .list-wrap .info-left-bottom span {
+  font-size: 36px; }
+
+[data-dpr="2"] .list-wrap .info-right p {
+  font-size: 26px; }
+
+[data-dpr="3"] .list-wrap .info-right p {
+  font-size: 39px; }
+
+[data-dpr="2"] .list-wrap .info-right big {
+  font-size: 80px; }
+
+[data-dpr="3"] .list-wrap .info-right big {
+  font-size: 120px; }
+
+[data-dpr="2"] #panel {
+  font-size: 32px; }
+
+[data-dpr="3"] #panel {
+  font-size: 48px; }
+
+/*# sourceMappingURL=vicinity.css.mapmap */

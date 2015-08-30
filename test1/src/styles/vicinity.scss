@@ -1,0 +1,211 @@
+$browser-default-font-size: 75px !default;
+html {
+  font-size: $browser-default-font-size;
+}
+@function strip-units($number){
+  @return $number / ($number * 0 + 1);
+}
+@mixin remCalc($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));
+    $browser-default-font-size: strip-units($browser-default-font-size);
+    $pxValues: #{$pxValues + $value / $browser-default-font-size}rem;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+
+  #{$property}: $pxValues;
+}
+
+
+.list-wrap{
+  width: 100%;
+
+  .list{
+    @include remCalc(margin-left, 30);
+    @include remCalc(height,173);
+    border-bottom: 1px solid #e5e5e5;
+
+    .list-img{
+      position: absolute;
+      @include remCalc(height,130);
+      @include remCalc(width,160);
+      @include remCalc(margin-top,21);
+      @include remCalc(margin-bottom,21);
+    }
+
+    .list-info{
+      //float: right;
+      @include remCalc(margin-left,180);
+      position: relative;
+
+      .info-left{
+        float: left;
+      }
+    }
+
+    h2{
+      color: #000;
+      font-size: 15px;
+      @include remCalc(line-height,31);
+      @include remCalc(width,350);
+      @include remCalc(padding-top,34);
+      @include remCalc(margin-bottom,17);
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      overflow:hidden;
+    }
+
+    h3{
+
+      .star{
+        display: inline-block;
+        @include remCalc(height,24);
+        @include remCalc(margin-right ,15);
+        color: #ffc600;
+
+
+        i{
+          font-size: 12px;
+          @include remCalc(margin-right,2);
+        }
+      }
+
+      span{
+        font-size: 12px;
+      }
+    }
+
+    .info-left-bottom{
+      @include remCalc(margin-top,17);
+    }
+
+    .good{
+      @include remCalc(height,24);
+      @include remCalc(width,25);
+      @include remCalc(margin-right,12);
+    }
+
+    span{
+      color: #cccccc;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .freinds{
+      @include remCalc(margin-right,15);
+    }
+    .others{
+      @include remCalc(margin-right,32);
+    }
+
+    .info-right{
+      float: right;
+      color: #f85800;
+      @include remCalc(margin-right,20px);
+      @include remCalc(padding-top,87px);
+
+      p{
+        font-size: 13px;
+        @include remCalc(line-height,30px);
+      }
+
+      big{
+        font-size: 40px;
+        @include remCalc(line-height,82px);
+      }
+    }
+
+    ul{
+      position: absolute;
+      @include remCalc(top,31px);
+      @include remCalc(right,58px);
+
+      li{
+        float: left;
+        @include remCalc(margin-left,8px);
+
+        img{
+          @include remCalc(width,28px);
+          @include remCalc(height,28px);
+        }
+      }
+    }
+  }
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  @include remCalc(height, 60);
+  background: url("../images/load.gif") no-repeat center #fff;
+  -webkit-background-size: 0.8rem;
+  background-size: 0.8rem;
+}
+
+#panel{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  @include remCalc(height, 80);
+  @include remCalc(line-height, 80);
+  font-size: 16px;
+  text-align: center;
+  display: none;
+  background-color: #fff;
+}
+
+
+@at-root {
+  [data-dpr="2"] .list-wrap .list h2{
+    font-size: 30px;
+  }
+  [data-dpr="3"] .list-wrap .list h2{
+    font-size: 60px;
+  }
+  [data-dpr="2"] .list-wrap .list h3 span{
+    font-size: 24px;
+  }
+  [data-dpr="3"] .list-wrap .list h3 span{
+    font-size: 36px;
+  }
+  [data-dpr="2"] .list-wrap .list h3 .star i{
+    font-size: 24px;
+  }
+  [data-dpr="3"] .list-wrap .list h3 .star i{
+    font-size: 36px;
+  }
+
+  [data-dpr="2"] .list-wrap .info-left-bottom span{
+    font-size: 24px;
+  }
+  [data-dpr="3"] .list-wrap .info-left-bottom span{
+    font-size: 36px;
+  }
+  [data-dpr="2"] .list-wrap .info-right p{
+    font-size: 26px;
+  }
+  [data-dpr="3"] .list-wrap .info-right p{
+    font-size: 39px;
+  }
+  [data-dpr="2"] .list-wrap .info-right big{
+    font-size: 80px;
+  }
+  [data-dpr="3"] .list-wrap .info-right big{
+    font-size: 120px;
+  }
+  [data-dpr="2"] #panel{
+    font-size: 32px;
+  }
+  [data-dpr="3"] #panel{
+    font-size: 48px;
+  }
+}
