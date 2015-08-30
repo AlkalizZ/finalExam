@@ -1,0 +1,88 @@
+$browser-default-font-size: 75px !default;
+html {
+  font-size: $browser-default-font-size;
+}
+@function strip-units($number){
+  @return $number / ($number * 0 + 1);
+}
+@mixin remCalc($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));
+    $browser-default-font-size: strip-units($browser-default-font-size);
+    $pxValues: #{$pxValues + $value / $browser-default-font-size}rem;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+
+  #{$property}: $pxValues;
+}
+
+header{
+  background-color: #fbf6eb;
+  width: 100%;
+  //@include remCalc(height, 307);
+  border-bottom: 1px solid #e6ccb5;
+  text-align: center;
+
+
+  img{
+    @include remCalc(margin-top, 60);
+    @include remCalc(margin-bottom, 40);
+    @include remCalc(height, 120);
+    @include remCalc(width, 120);
+  }
+  p{
+    font-size: 12px;
+    color: #4a4a4a;
+    @include remCalc(margin-bottom, 60);
+  }
+}
+
+
+section{
+  background-color: #fff;
+  width: 100%;
+
+  #ul{
+    display: block;
+    color: #a5a5a5;
+    @include remCalc(margin-top, 40);
+    @include remCalc(margin-right, 30);
+    @include remCalc(margin-left, 30);
+    li{
+      font-size: 12px;
+      color: #a5a5a5;
+      @include remCalc(margin-bottom, 36);
+      @include remCalc(line-height, 60);
+      i{
+        @include remCalc(margin-right, 34);
+        font-size: 12px;
+      }
+    }
+  }
+}
+@at-root {
+  [data-dpr="2"] header p{
+    font-size: 24px;
+  }
+  [data-dpr="3"] header p{
+    font-size: 36px;
+  }
+  [data-dpr="2"] section #ul li{
+    font-size: 24px;
+  }
+  [data-dpr="3"] section #ul li{
+    font-size: 36px;
+  }
+  [data-dpr="2"] section #ul li i{
+    font-size: 24px;
+  }
+  [data-dpr="3"] section #ul li i{
+    font-size: 36px;
+  }
+}
