@@ -31,7 +31,7 @@ gulp.task('images', function() {
 });
 // Clean
 gulp.task('clean', function(cb) {
-    del(['dist/assets/css', 'dist/assets/js', 'dist/assets/img'], cb)
+    del(['dist/assets/css', 'dist/assets/script', 'dist/assets/img'], cb)
 });
 // Default task
 gulp.task('default', ['clean'], function() {
@@ -41,7 +41,7 @@ gulp.task('default', ['clean'], function() {
 gulp.task('watch', function() {
     // Watch .scss files
     gulp.watch('src/styles/**/*.scss', ['styles']);
-    // Watch .js files
+    // Watch .script files
     gulp.watch('src/scripts/**/*.js', ['scripts']);
     // Watch image files
     gulp.watch('src/images/**/*', ['images']);

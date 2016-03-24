@@ -250,7 +250,7 @@ var MyQuery = {
                     if(xhr.status == 200){
                         if(callback && typeof callback === "function") callback(xhr);
                     }else{
-                        alert("error");
+                        //alert("error");
                     }
                 }
             }

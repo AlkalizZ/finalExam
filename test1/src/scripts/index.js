@@ -159,8 +159,6 @@
             iSure = false;
             MyQuery.post(url, function(res){
                 var response = JSON.parse(res.response);
-                //console.log(response);
-                //console.log(sendData);
                 appendList(response.data);
                 start += len;
                 sendData = "start=" + start + "&len=" + len;
