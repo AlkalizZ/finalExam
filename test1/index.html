@@ -3,25 +3,33 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="dist/scripts/main.min.js"></script>
+    <script src="http://www.alkalixin.cn/js/MyQuery.js"></script>
+
     <script>
-        var url = "http://kaohe.zeroling.com/kaohe/state";
+        var url = "http://www.alkalixin.cn:3999/state";
         var obj = {
             1: "vicinity.html",
             2: "recommend.html",
             3: "notOpen.html",
             4: "notFind.html",
             5: "cantBuy.html"
-        }
-        MyQuery.post(url, function(res){
-            var response = res.response,
-                data = JSON.parse(response);
-            if(data.success){
-                location.href = obj[data.state];
-            }else{
-                console.warn(res);
+        };
+        _.ajax({
+            type:'post',
+            url: url,
+            success: function (res) {
+                var data = JSON.parse(res);
+                if(data.success){
+                    location.href = obj[data.state];
+                }else{
+                    console.warn(res);
+                }
+            },
+            fail: function (e) {
+                console.log(e);
             }
         });
+
     </script>
 </head>
 <body>

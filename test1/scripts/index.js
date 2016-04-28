@@ -1,37 +1,33 @@
 /**
  * Created by Alkali on 15/8/30.
  */
-;(function(){
+;(function () {
     var body = document.querySelector("body"),
         footer = document.querySelector("footer"),
         panel = document.querySelector("#panel");
-        url = "http://kaohe.zeroling.com/kaohe/list";
+    url = 'http://www.alkalixin.cn:3999/list';
     var start = 0,
         len = 3,
         iSure = true,
         once = true;
-    var sendData = "start=" + start + "&len=" + len;
+    var sendData = {
+        start: start,
+        len: len
+    };
     getData();
-    window.onscroll = function(){
+    window.onscroll = function () {
         var totalHeigh = document.body.offsetHeight,
             scrollTop = document.body.scrollTop,
             height = document.documentElement.clientHeight;
 
-        if(scrollTop / (totalHeigh - height) >= 0.95 && once){
+        if (scrollTop / (totalHeigh - height) >= 0.95 && once) {
             footer.style.display = "block";
             getData();
         }
-    }
-    function appendList(data){
+    };
+    function appendList(data) {
         var footer = document.querySelector("footer");
-        if(data.length == 0 && once === true){
-            once = false;
-            panel.style.display = "block";
-            setTimeout(function(){
-                MyQuery.fade(panel,0, 50);
-            },2000);
-        }
-        for(var i in data){
+        for (var i in data) {
             var section = document.createElement("section"),
                 list = document.createElement("div"),
                 listPreview = document.createElement("img"),
@@ -47,14 +43,14 @@
                 p = document.createElement("p"),
                 big = document.createElement("big"),
                 ul = document.createElement("ul");
-            MyQuery.addClass(section, "list-wrap");
-            MyQuery.addClass(list, "list");
-            MyQuery.addClass(star, "star");
-            MyQuery.addClass(listPreview, "list-img");
+            _.addClass(section, "list-wrap");
+            _.addClass(list, "list");
+            _.addClass(star, "star");
+            _.addClass(listPreview, "list-img");
             listPreview.src = data[i].imgUrl;
-            MyQuery.addClass(listInfo, "list-info");
-            MyQuery.addClass(listInfo, "claerfix");
-            MyQuery.addClass(infoLeft, "info-left");
+            _.addClass(listInfo, "list-info");
+            _.addClass(listInfo, "claerfix");
+            _.addClass(infoLeft, "info-left");
 
             h2.innerHTML = data[i].title;
 
@@ -62,56 +58,53 @@
             //添加星星
             var stars = data[i].stars,
                 num = parseInt(stars.split("."[0]));
-            if(stars == "0"){
-                for(var a = 0; a < 5; a++){
+            if (stars == "0") {
+                for (var a = 0; a < 5; a++) {
                     var icon = document.createElement("i");
                     icon.innerHTML = "&#xe602;";
-                    MyQuery.addClass(icon, "iconfont");
+                    _.addClass(icon, "iconfont");
                     star.appendChild(icon);
                 }
-            }else if(stars == "5"){
-                for(var a = 0; a < 5; a++){
+            } else if (stars == "5") {
+                for (var a = 0; a < 5; a++) {
                     var icon = document.createElement("i");
                     icon.innerHTML = "&#xe600;";
-                    MyQuery.addClass(icon, "iconfont");
+                    _.addClass(icon, "iconfont");
                     star.appendChild(icon);
                 }
-            }else{
-                for(var a = 0; a < num; a++){
+            } else {
+                for (var a = 0; a < num; a++) {
                     var icon = document.createElement("i");
                     icon.innerHTML = "&#xe600;";
-                    MyQuery.addClass(icon, "iconfont");
+                    _.addClass(icon, "iconfont");
                     star.appendChild(icon);
                 }
                 var pot = document.createElement("i");
                 pot.innerHTML = "&#xe601";
-                MyQuery.addClass(pot, "iconfont");
+                _.addClass(pot, "iconfont");
                 star.appendChild(pot);
-                for(var a = 0; a < 5 - num - 1; a++){
+                for (var a = 0; a < 5 - num - 1; a++) {
                     var icon = document.createElement("i");
                     icon.innerHTML = "&#xe602;";
-                    MyQuery.addClass(icon, "iconfont");
+                    _.addClass(icon, "iconfont");
                     star.appendChild(icon);
                 }
             }
 
 
-
-
-
             average.innerHTML = "人均" + data[i].average + "元";
-            MyQuery.addClass(infoLeftBottom, "info-left-bottom");
+            _.addClass(infoLeftBottom, "info-left-bottom");
             distance.innerHTML = data[i].distance;
-            MyQuery.addClass(infoRight, "info-right");
+            _.addClass(infoRight, "info-right");
             big.innerHTML = data[i].discount;
             p.innerHTML = "折";
             p.insertBefore(big, p.childNodes[0]);
             infoRight.appendChild(p);//info-right添加完成
 
 
-            if(data[i].flag){
+            if (data[i].flag) {
                 var str = data[i].flag.split("|");
-                for(var i in str){
+                for (var i in str) {
                     var li = document.createElement("li"),
                         img = document.createElement("img");
                     img.src = "src/images/" + str[i] + ".png";
@@ -122,16 +115,16 @@
 
             h3.appendChild(star);
             h3.appendChild(average);//h3
-            if(data[i].good == 0){
+            if (data[i].good == 0) {
                 var others = document.createElement("span");
-                MyQuery.addClass(others, "others");
+                _.addClass(others, "others");
                 others.innerHTML = data[i].people + "已享";
                 infoLeftBottom.appendChild(others);
-            }else{
+            } else {
                 var good = document.createElement("img"),
                     friends = document.createElement("span");
-                MyQuery.addClass(good, "good");
-                MyQuery.addClass(friends, "freinds");
+                _.addClass(good, "good");
+                _.addClass(friends, "freinds");
                 good.src = "src/images/good.png";
                 friends.innerHTML = data[i].good + "位朋友";
                 infoLeftBottom.appendChild(good);
@@ -154,17 +147,45 @@
         }
     }
 
-    function getData(){
-        if(iSure){
+    function getData() {
+        if (iSure) {
             iSure = false;
-            MyQuery.post(url, function(res){
-                var response = JSON.parse(res.response);
-                appendList(response.data);
-                start += len;
-                sendData = "start=" + start + "&len=" + len;
-                footer.style.display = "none";
-                iSure = true;
-            }, sendData);
+            _.ajax({
+                type: 'post',
+                url: url,
+                data: sendData,
+                success: function (res) {
+                    var response = JSON.parse(res);
+
+
+                    for(var i = 0; i < response.data.length; i++){
+
+                        if(response.data[i].isEnd && once === true){
+                            iSure = false;
+                            once = false;
+                            panel.style.display = "block";
+                            setTimeout(function () {
+                                _.fade(panel, 0, 50);
+                            }, 2000);
+                            footer.style.display = "none";
+                            return;
+                        }
+
+                    }
+                    appendList(response.data);
+                    start += len;
+                    sendData = {
+                        start: start,
+                        len: len
+                    };
+                    console.log(sendData.start);
+                    footer.style.display = "none";
+                    iSure = true;
+                },
+                fail: function (res) {
+                    console.log(res);
+                }
+            })
         }
     }
 })();
