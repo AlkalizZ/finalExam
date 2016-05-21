@@ -5,7 +5,7 @@
     var body = document.querySelector("body"),
         footer = document.querySelector("footer"),
         panel = document.querySelector("#panel");
-    url = 'http://www.alkalixin.cn:3999/list';
+    url = 'http://usenodejs.alkalixin.cn/list';
     var start = 0,
         len = 3,
         iSure = true,
@@ -107,7 +107,7 @@
                 for (var i in str) {
                     var li = document.createElement("li"),
                         img = document.createElement("img");
-                    img.src = "src/images/" + str[i] + ".png";
+                    img.src = "images/" + str[i] + ".png";
                     li.appendChild(img);
                     ul.appendChild(li);
                 }
@@ -125,7 +125,7 @@
                     friends = document.createElement("span");
                 _.addClass(good, "good");
                 _.addClass(friends, "freinds");
-                good.src = "src/images/good.png";
+                good.src = "images/good.png";
                 friends.innerHTML = data[i].good + "位朋友";
                 infoLeftBottom.appendChild(good);
                 infoLeftBottom.appendChild(friends);
